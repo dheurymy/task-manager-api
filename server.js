@@ -21,6 +21,9 @@ mongoose.connect(MONGO_URI, {
 
 const authRoutes = require('./routes/auth'); // Importa as rotas de autenticação
 const taskRoutes = require('./routes/tasks'); // Importa as rotas de tarefas
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
 app.use('/api/auth', authRoutes); // Define as rotas de autenticação com o prefixo '/api/auth'
 app.use('/api/tasks', taskRoutes); // Define as rotas de tarefas com o prefixo '/api/tasks'
 
