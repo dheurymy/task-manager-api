@@ -2,6 +2,7 @@ const express = require('express'); // Importa o framework Express
 const mongoose = require('mongoose'); // Importa o módulo mongoose para interagir com o MongoDB
 const cors = require('cors'); // Importa o módulo cors para permitir requisições de diferentes origens
 const dotenv = require('dotenv'); // Importa o módulo dotenv para gerenciar variáveis de ambiente
+const User = require('./models/User'); // Importa o modelo de usuário
 
 dotenv.config(); // Carrega as variáveis de ambiente do arquivo .env
 
