@@ -27,6 +27,19 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes); // Define as rotas de autenticação com o prefixo '/api/auth'
 app.use('/api/tasks', taskRoutes); // Define as rotas de tarefas com o prefixo '/api/tasks'
 
+
+
+app.post('/auth/register', async (req, res) => {
+  const { name, email, password } = req.body; // Extrai nome, email e senha do corpo da requisição
+
+  try {
+    const user = new User({ name, email, password }); // Cria um novo usuário com os dados fornecidos
+    await user.save(); // Salva o usuário no banco de dados
+    res.status(201).json({ message: 'Usuário registrado com sucesso' }); // Retorna mensagem de sucesso com status 201
+  } catch (err) {
+    res.status(400).json({ message: err.message }); // Retorna mensagem de erro com status 400
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Mensagem indicando que o servidor está rodando na porta especificada
 });
